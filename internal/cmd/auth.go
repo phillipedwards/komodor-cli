@@ -33,7 +33,7 @@ func newAuthSetKeyCmd() *cobra.Command {
 			if err := config.Save(cfg); err != nil {
 				return fmt.Errorf("save config: %w", err)
 			}
-			fmt.Fprintln(cmd.OutOrStdout(), "API key saved.")
+			_, _ = fmt.Fprintln(cmd.OutOrStdout(), "API key saved.")
 			return nil
 		},
 	}
@@ -54,7 +54,7 @@ func newAuthShowCmd() *cobra.Command {
 				return fmt.Errorf("no API key configured — set KOMODOR_API_KEY or run 'komodor auth set-key <key>'")
 			}
 
-			fmt.Fprintf(cmd.OutOrStdout(), "Key:    %s\nSource: %s\n", maskKey(key), source)
+			_, _ = fmt.Fprintf(cmd.OutOrStdout(), "Key:    %s\nSource: %s\n", maskKey(key), source)
 			return nil
 		},
 	}

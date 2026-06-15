@@ -26,16 +26,20 @@ type Formatter interface {
 	Print(data any) error
 }
 
-func New(format string) (Formatter, error) {
+func New(format string, writers ...io.Writer) (Formatter, error) {
+	w := io.Writer(os.Stdout)
+	if len(writers) > 0 && writers[0] != nil {
+		w = writers[0]
+	}
 	switch Format(strings.ToLower(format)) {
 	case FormatTable, "":
-		return &tableFormatter{w: os.Stdout}, nil
+		return &tableFormatter{w: w}, nil
 	case FormatJSON:
-		return &jsonFormatter{w: os.Stdout}, nil
+		return &jsonFormatter{w: w}, nil
 	case FormatYAML:
-		return &yamlFormatter{w: os.Stdout}, nil
+		return &yamlFormatter{w: w}, nil
 	case FormatCSV:
-		return &csvFormatter{w: os.Stdout}, nil
+		return &csvFormatter{w: w}, nil
 	default:
 		return nil, fmt.Errorf("unknown output format %q: use table, json, yaml, or csv", format)
 	}

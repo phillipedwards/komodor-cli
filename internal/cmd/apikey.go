@@ -29,7 +29,7 @@ func newAPIKeyValidateCmd() *cobra.Command {
 			if resp.StatusCode() != 200 {
 				return apiError(resp.StatusCode(), resp.Body)
 			}
-			fmt.Fprintln(cmd.OutOrStdout(), "API key is valid.")
+			_, _ = fmt.Fprintln(cmd.OutOrStdout(), "API key is valid.")
 			return nil
 		},
 	}

@@ -34,11 +34,6 @@ func strSlicePtr(ss []string) *[]string {
 	return &ss
 }
 
-// safePrint prints a value and exits on error.
-func printOrErr(f interface{ Print(any) error }, data any) error {
-	return f.Print(data)
-}
-
 func joinStrings(ss []string) string {
 	return strings.Join(ss, ", ")
 }

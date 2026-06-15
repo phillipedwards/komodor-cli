@@ -62,7 +62,7 @@ func NewRootCmd() *cobra.Command {
 				return fmt.Errorf("create API client: %w", err)
 			}
 
-			formatter, err := output.New(flagOutput)
+			formatter, err := output.New(flagOutput, cmd.OutOrStdout())
 			if err != nil {
 				return err
 			}
