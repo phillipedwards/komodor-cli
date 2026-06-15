@@ -1,0 +1,45 @@
+# Build output
+bin/
+dist/
+
+# Go toolchain
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+vendor/
+
+# Go workspace
+go.work
+go.work.sum
+
+# Test cache and coverage
+coverage.out
+coverage.html
+
+# Generated files (regenerate via `make generate`)
+# internal/client/client.gen.go is intentionally NOT ignored — it is committed
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment / secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Config (user-local, not project config)
+~/.config/komodor/
